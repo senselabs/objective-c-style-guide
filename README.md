@@ -384,7 +384,7 @@ typedef NS_ENUM(NSUInteger, CLKLeftMenuTopItemType)
 {
   CLKLeftMenuTopItemMain,
   CLKLeftMenuTopItemShows,
-  CLKLeftMenuTopItemSchedule
+  CLKLeftMenuTopItemSchedule,
 };
 ```
 
