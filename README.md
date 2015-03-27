@@ -175,8 +175,8 @@ If you are creating an SDK or reusable code, be sure to thoroughly document your
 
 ## Project Naming
 
-Name projects with the prefix "SL". If creating an SDK, a three letter prefix should always be used for class names. For example, in SLCloudKit, the prefix 'CLK' should be used. For repo names, specify the 
-`type-name-platform`
+Name projects with the prefix `SL`. If creating an SDK, a three letter prefix should always be used for class names. For example, in SLCloudKit, the prefix `CLK` should be used. For repo names, specify the 
+`type-name-platform`.
 
 Example:
 
@@ -205,7 +205,7 @@ Constants should be camel-case with all words capitalized and prefixed by the re
 **Preferred:**
 
 ```objc
-static NSTimeInterval const RWTTutorialViewControllerNavigationFadeAnimationDuration = 0.3;
+static NSTimeInterval const CLKTutorialViewControllerNavigationFadeAnimationDuration = 0.3;
 ```
 
 **Not Preferred:**
@@ -265,26 +265,6 @@ The usage of the word "and" is reserved.  It should not be used for multiple par
 Variables should be named as descriptively as possible. Single letter variable names should be avoided except in `for()` loops.
 
 Asterisks indicating pointers belong with the variable, e.g., `NSString *text` not `NSString* text` or `NSString * text`, except in the case of constants.
-
-Direct access to instance variables that 'back' properties should be avoided except in initializer methods (`init`, `initWithCoder:`, etc…), `dealloc` methods and within custom setters and getters. For more information on using Accessor Methods in Initializer Methods and dealloc, see [here](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/MemoryMgmt/Articles/mmPractical.html#//apple_ref/doc/uid/TP40004447-SW6).
-
-**Preferred:**
-
-```objc
-@interface RWTTutorial : NSObject
-
-@property (strong, nonatomic) NSString *tutorialName;
-
-@end
-```
-
-**Not Preferred:**
-
-```objc
-@interface RWTTutorial : NSObject {
-  NSString *tutorialName;
-}
-```
 
 
 ## Property Attributes
@@ -360,8 +340,8 @@ if (_flag.isKeyboardActive)
 ```objc
 NSArray *names = @[@"Brian", @"Matt", @"Chris", @"Alex", @"Steve", @"Paul"];
 NSDictionary *productManagers = @{@"iPhone": @"Kate", @"iPad": @"Kamal", @"Mobile Web": @"Bill"};
-NSNumber *shouldUseLiterals = @YES;
-NSNumber *buildingStreetNumber = @10018;
+NSNumber *shouldUseLiterals = @(YES);
+NSNumber *buildingStreetNumber = @(10018);
 ```
 
 **Not Preferred:**
@@ -380,15 +360,15 @@ Constants are preferred over in-line string literals or numbers, as they allow f
 **Preferred:**
 
 ```objc
-static NSString *const RWTAboutViewControllerCompanyName = @"RayWenderlich.com";
+static NSString *const CLKAboutViewControllerCompanyName = @"senselabs.com";
 
-static CGFloat const RWTImageThumbnailHeight = 50.0;
+static CGFloat const CLKImageThumbnailHeight = 50.0;
 ```
 
 **Not Preferred:**
 
 ```objc
-#define CompanyName @"RayWenderlich.com"
+#define CompanyName @"senselabs.com"
 
 #define thumbnailHeight 2
 ```
@@ -400,23 +380,23 @@ When using `enum`s, it is recommended to use the new fixed underlying type speci
 **For Example:**
 
 ```objc
-typedef NS_ENUM(NSInteger, RWTLeftMenuTopItemType) 
+typedef NS_ENUM(NSInteger, CLKLeftMenuTopItemType) 
 {
-  RWTLeftMenuTopItemMain,
-  RWTLeftMenuTopItemShows,
-  RWTLeftMenuTopItemSchedule
+  CLKLeftMenuTopItemMain,
+  CLKLeftMenuTopItemShows,
+  CLKLeftMenuTopItemSchedule
 };
 ```
 
 You can also make explicit value assignments (showing older k-style constant definition):
 
 ```objc
-typedef NS_ENUM(NSInteger, RWTGlobalConstants) 
+typedef NS_ENUM(NSInteger, CLKGlobalConstants) 
 {
-  RWTPinSizeMin = 1,
-  RWTPinSizeMax = 5,
-  RWTPinCountMin = 100,
-  RWTPinCountMax = 500,
+  CLKPinSizeMin = 1,
+  CLKPinSizeMax = 5,
+  CLKPinCountMin = 100,
+  CLKPinCountMax = 500,
 };
 ```
 
@@ -435,9 +415,6 @@ enum GlobalConstants
 
 ## Case Statements
 
-Braces are not required for case statements, unless enforced by the complier.  
-When a case contains more than one line, braces should be added.
-
 ```objc
 switch (condition) 
 {
@@ -445,11 +422,8 @@ switch (condition)
     // ...
     break;
   case 2: 
-  {
     // ...
-    // Multi-line example using braces
     break;
-  }
   case 3:
     // ...
     break;
@@ -480,17 +454,17 @@ switch (condition)
 When using an enumerated type for a switch, 'default' is not needed.   For example:
 
 ```objc
-RWTLeftMenuTopItemType menuType = RWTLeftMenuTopItemMain;
+CLKLeftMenuTopItemType menuType = CLKLeftMenuTopItemMain;
 
 switch (menuType) 
 {
-  case RWTLeftMenuTopItemMain:
+  case CLKLeftMenuTopItemMain:
     // ...
     break;
-  case RWTLeftMenuTopItemShows:
+  case CLKLeftMenuTopItemShows:
     // ...
     break;
-  case RWTLeftMenuTopItemSchedule:
+  case CLKLeftMenuTopItemSchedule:
     // ...
     break;
 }
@@ -499,12 +473,12 @@ switch (menuType)
 
 ## Private Properties
 
-Private properties should be declared in class extensions (anonymous categories) in the implementation file of a class. Named categories (such as `RWTPrivate` or `private`) should never be used unless extending another class.   The Anonymous category can be shared/exposed for testing using the <headerfile>+Private.h file naming convention.
+Private properties should be declared in class extensions (anonymous categories) in the implementation file of a class. Named categories (such as `CLKPrivate` or `private`) should never be used unless extending another class.   The Anonymous category can be shared/exposed for testing using the <headerfile>+Private.h file naming convention.
 
 **For Example:**
 
 ```objc
-@interface RWTDetailViewController ()
+@interface CLKDetailViewController ()
 
 @property (strong, nonatomic) GADBannerView *googleAdView;
 @property (strong, nonatomic) ADBannerView *iAdView;
@@ -610,7 +584,7 @@ Where class constructor methods are used, these should always return type of 'in
 ```objc
 @interface Airplane
 
-+ (instancetype)airplaneWithType:(RWTAirplaneType)type;
++ (instancetype)airplaneWithType:(CLKAirplaneType)type;
 
 @end
 ```
@@ -723,7 +697,7 @@ This will prevent [possible and sometimes prolific crashes](http://cocoasamurai.
 
 ## Smiley Face
 
-Smiley faces are a very prominent style feature of the raywenderlich.com site!  It is very important to have the correct smile signifying the immense amount of happiness and excitement for the coding topic.
+It is very important to have the correct smile signifying the immense amount of happiness and excitement for the coding topic.
 
 **Preferred:**
 ```objc
