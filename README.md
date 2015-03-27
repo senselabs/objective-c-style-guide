@@ -27,6 +27,7 @@ Here are some of the documents from Apple that informed the style guide. If some
 * [Code Organization](#code-organization)
 * [Spacing](#spacing)
 * [Comments](#comments)
+* [Project Naming](#project-naming)
 * [Naming](#naming)
   * [Underscores](#underscores)
 * [Methods](#methods)
@@ -98,7 +99,7 @@ Use `#pragma mark -` to categorize methods in functional groupings and protocol/
 
 - (void)privateMethod {}
 
-#pragma mark - Protocol conformance
+#pragma mark - Protocol Conformance
 #pragma mark - UITextFieldDelegate
 #pragma mark - UITableViewDataSource
 #pragma mark - UITableViewDelegate
@@ -119,7 +120,7 @@ Use `#pragma mark -` to categorize methods in functional groupings and protocol/
 
 **Preferred:**
 ```objc
-if (_user.isHappy)
+if (self.isHappy)
 {
     // Do something
 }
@@ -131,7 +132,7 @@ else
 
 **Not Preferred:**
 ```objc
-if (_user.isHappy) {
+if (self.isHappy) {
   // Do something
 } else {
   // Do something else
@@ -172,6 +173,16 @@ When they are needed, comments should be used to explain **why** a particular pi
 
 If you are creating an SDK or reusable code, be sure to thoroughly document your code as if you were planning on open sourcing it. Use VVDocumenter for comment styling.
 
+## Project Naming
+
+Name projects with the prefix "SL". If creating an SDK, a three letter prefix should always be used for class names and constants. For example, in SLCloudKit, the prefix 'CLK' should be used. For repo names, specify the `type-name without prefix-platform`
+
+Example:
+
+- Project Name: SLCloudKit
+- File name: CLKFileName
+- Repo Name: sdk-cloud-ios
+
 ## Naming
 
 Apple naming conventions should be adhered to wherever possible. Long, descriptive method and variable names are good.
@@ -187,8 +198,6 @@ UIButton *settingsButton;
 ```objc
 UIButton *setBut;
 ```
-
-If creating an SDK, a three letter prefix should always be used for class names and constants. For example, in the SLCloudKit SDK, the prefix 'CLK' should be used.
 
 Constants should be camel-case with all words capitalized and prefixed by the related class name for clarity.
 
