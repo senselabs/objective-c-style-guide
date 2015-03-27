@@ -680,7 +680,7 @@ In accordance with the above, any methods that need to return an error to the ca
 
 **Preferred:**
 ```objc
-- (BOOL) doSomethingWithError:(NSError **)error
+- (BOOL)doSomethingWithError:(NSError **)error
 {
    // error condition
    *error = [NSError errorWithDomain:CLKNetworkError code:CLKNetworkErrorCodeNotFound userInfo:nil];
@@ -690,7 +690,7 @@ In accordance with the above, any methods that need to return an error to the ca
 
 **Not Preferred:**
 ```objc
-- (NSError *) doSomething
+- (NSError *)doSomething
 {
    // error condition
    return [NSError errorWithDomain:@"Network error" code:42 userInfo:nil];
