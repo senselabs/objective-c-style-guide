@@ -33,6 +33,7 @@ Here are some of the documents from Apple that informed the style guide. If some
 * [Variables](#variables)
 * [Property Attributes](#property-attributes)
 * [Dot-Notation Syntax](#dot-notation-syntax)
+* [Flags](#flags)
 * [Literals](#literals)
 * [Constants](#constants)
 * [Enumerated Types](#enumerated-types)
