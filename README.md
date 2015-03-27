@@ -173,9 +173,7 @@ If you are creating an SDK or reusable code, be sure to thoroughly document your
 
 ## Naming
 
-Apple naming conventions should be adhered to wherever possible, especially those related to [memory management rules](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/MemoryMgmt/Articles/MemoryMgmt.html) ([NARC](http://stackoverflow.com/a/2865194/340508)).
-
-Long, descriptive method and variable names are good.
+Apple naming conventions should be adhered to wherever possible. Long, descriptive method and variable names are good.
 
 **Preferred:**
 
@@ -189,7 +187,7 @@ UIButton *settingsButton;
 UIButton *setBut;
 ```
 
-A three letter prefix should always be used for class names and constants, however may be omitted for Core Data entity names. For any official raywenderlich.com books, starter kits, or tutorials, the prefix 'RWT' should be used.
+If creating an SDK, a three letter prefix should always be used for class names and constants. For example, in the SLCloudKit SDK, the prefix 'CLK' should be used.
 
 Constants should be camel-case with all words capitalized and prefixed by the related class name for clarity.
 
@@ -210,7 +208,7 @@ Properties should be camel-case with the leading word being lowercase. Use auto-
 **Preferred:**
 
 ```objc
-@property (strong, nonatomic) NSString *descriptiveVariableName;
+@property (nonatomic, strong) NSString *descriptiveVariableName;
 ```
 
 **Not Preferred:**
@@ -225,7 +223,7 @@ When using properties, instance variables should always be accessed and mutated 
 
 An exception to this: inside initializers, the backing instance variable (i.e. _variableName) should be used directly to avoid any potential side effects of the getters/setters.
 
-Local variables should not contain underscores.
+When using instance variables, always name them with an underscore `_instanceVariable`.
 
 ## Methods
 
@@ -257,8 +255,6 @@ Variables should be named as descriptively as possible. Single letter variable n
 
 Asterisks indicating pointers belong with the variable, e.g., `NSString *text` not `NSString* text` or `NSString * text`, except in the case of constants.
 
-[Private properties](#private-properties) should be used in place of instance variables whenever possible. Although using instance variables is a valid way of doing things, by agreeing to prefer properties our code will be more consistent. 
-
 Direct access to instance variables that 'back' properties should be avoided except in initializer methods (`init`, `initWithCoder:`, etc…), `dealloc` methods and within custom setters and getters. For more information on using Accessor Methods in Initializer Methods and dealloc, see [here](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/MemoryMgmt/Articles/mmPractical.html#//apple_ref/doc/uid/TP40004447-SW6).
 
 **Preferred:**
@@ -282,35 +278,22 @@ Direct access to instance variables that 'back' properties should be avoided exc
 
 ## Property Attributes
 
-Property attributes should be explicitly listed, and will help new programmers when reading the code.  The order of properties should be storage then atomicity, which is consistent with automatically generated code when connecting UI elements from Interface Builder.
+Property attributes should be explicitly listed, and will help new programmers when reading the code. 
 
 **Preferred:**
-
-```objc
-@property (weak, nonatomic) IBOutlet UIView *containerView;
-@property (strong, nonatomic) NSString *tutorialName;
-```
-
-**Not Preferred:**
 
 ```objc
 @property (nonatomic, weak) IBOutlet UIView *containerView;
-@property (nonatomic) NSString *tutorialName;
-```
-
-Properties with mutable counterparts (e.g. NSString) should prefer `copy` instead of `strong`. 
-Why? Even if you declared a property as `NSString` somebody might pass in an instance of an `NSMutableString` and then change it without you noticing that.  
-
-**Preferred:**
-
-```objc
-@property (copy, nonatomic) NSString *tutorialName;
+@property (nonatomic, strong) NSString *tutorialName;
+@property (nonatomic, assign) int pageCount;
 ```
 
 **Not Preferred:**
 
 ```objc
-@property (strong, nonatomic) NSString *tutorialName;
+@property (weak, nonatomic) IBOutlet UIView *containerView;
+@property (strong) NSString *tutorialName;
+@property (nonatomic) int pageCount;
 ```
 
 ## Dot-Notation Syntax
