@@ -345,7 +345,7 @@ Constants are preferred over in-line string literals or numbers, as they allow f
 **Preferred:**
 
 ```objc
-static NSString * const RWTAboutViewControllerCompanyName = @"RayWenderlich.com";
+static NSString *const RWTAboutViewControllerCompanyName = @"RayWenderlich.com";
 
 static CGFloat const RWTImageThumbnailHeight = 50.0;
 ```
@@ -365,7 +365,8 @@ When using `enum`s, it is recommended to use the new fixed underlying type speci
 **For Example:**
 
 ```objc
-typedef NS_ENUM(NSInteger, RWTLeftMenuTopItemType) {
+typedef NS_ENUM(NSInteger, RWTLeftMenuTopItemType) 
+{
   RWTLeftMenuTopItemMain,
   RWTLeftMenuTopItemShows,
   RWTLeftMenuTopItemSchedule
@@ -375,7 +376,8 @@ typedef NS_ENUM(NSInteger, RWTLeftMenuTopItemType) {
 You can also make explicit value assignments (showing older k-style constant definition):
 
 ```objc
-typedef NS_ENUM(NSInteger, RWTGlobalConstants) {
+typedef NS_ENUM(NSInteger, RWTGlobalConstants) 
+{
   RWTPinSizeMin = 1,
   RWTPinSizeMax = 5,
   RWTPinCountMin = 100,
@@ -388,7 +390,8 @@ Older k-style constant definitions should be **avoided** unless writing CoreFoun
 **Not Preferred:**
 
 ```objc
-enum GlobalConstants {
+enum GlobalConstants 
+{
   kMaxPinSize = 5,
   kMaxPinCount = 500,
 };
@@ -401,11 +404,13 @@ Braces are not required for case statements, unless enforced by the complier.
 When a case contains more than one line, braces should be added.
 
 ```objc
-switch (condition) {
+switch (condition) 
+{
   case 1:
     // ...
     break;
-  case 2: {
+  case 2: 
+  {
     // ...
     // Multi-line example using braces
     break;
@@ -423,7 +428,8 @@ switch (condition) {
 There are times when the same code can be used for multiple cases, and a fall-through should be used.  A fall-through is the removal of the 'break' statement for a case thus allowing the flow of execution to pass to the next case value.  A fall-through should be commented for coding clarity.
 
 ```objc
-switch (condition) {
+switch (condition) 
+{
   case 1:
     // ** fall-through! **
   case 2:
@@ -441,7 +447,8 @@ When using an enumerated type for a switch, 'default' is not needed.   For examp
 ```objc
 RWTLeftMenuTopItemType menuType = RWTLeftMenuTopItemMain;
 
-switch (menuType) {
+switch (menuType) 
+{
   case RWTLeftMenuTopItemMain:
     // ...
     break;
@@ -481,7 +488,7 @@ This allows for more consistency across files and greater visual clarity.
 
 ```objc
 if (someObject) {}
-if (![anotherObject boolValue]) {}
+if (!anotherObject) {}
 ```
 
 **Not Preferred:**
@@ -506,7 +513,8 @@ Conditional bodies should always use braces even when a conditional body could b
 
 **Preferred:**
 ```objc
-if (!error) {
+if (!error) 
+{
   return success;
 }
 ```
@@ -548,9 +556,10 @@ result = a > b ? x = c > d ? c : d : y;
 Init methods should follow the convention provided by Apple's generated code template.  A return type of 'instancetype' should also be used instead of 'id'.
 
 ```objc
-- (instancetype)init {
-  self = [super init];
-  if (self) {
+- (instancetype)init 
+{
+  if (self = [super init]) 
+  {
     // ...
   }
   return self;
