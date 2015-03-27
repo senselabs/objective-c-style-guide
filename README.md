@@ -232,14 +232,6 @@ Properties should be camel-case with the leading word being lowercase. Use auto-
 id varnm;
 ```
 
-### Underscores
-
-When using properties, instance variables should always be accessed and mutated using `self.`. This means that all properties will be visually distinct, as they will all be prefaced with `self.`. 
-
-An exception to this: inside initializers, the backing instance variable (i.e. _variableName) should be used directly to avoid any potential side effects of the getters/setters.
-
-When using instance variables, always name them with an underscore `_instanceVariable`.
-
 ## Methods
 
 In method signatures, there should be a space after the method type (-/+ symbol). There should be a space between the method segments (matching Apple's style).  Always include a keyword and be descriptive with the word before the argument which describes the argument.
@@ -271,7 +263,11 @@ Variables should be named as descriptively as possible. Single letter variable n
 Asterisks indicating pointers belong with the variable, e.g., `NSString *text` not `NSString* text` or `NSString * text`, except in the case of constants.
 
 
-## Property Attributes
+## Properties
+
+Properties should be used in all cases unless you are working with C/C++ code. Properties should always be accessed and mutated using `self.`. This means that all properties will be visually distinct, as they will all be prefaced with `self.`.
+
+An exception to this: inside initializers, the backing instance variable (i.e. _variableName) should be used directly to avoid any potential side effects of the getters/setters.
 
 Property attributes should be explicitly listed, and will help new programmers when reading the code. 
 
