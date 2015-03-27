@@ -710,6 +710,6 @@ It is very important to have the correct smile signifying the immense amount of 
 ```  
 
 
-## Xcode project
+## Xcode Project
 
-The physical files should be kept in sync with the Xcode project files in order to avoid file sprawl. Any Xcode groups created should be reflected by folders in the filesystem. Code should be grouped not only by type, but also by feature for greater clarity.
+The physical files should be kept in sync with the Xcode project files in order to avoid file sprawl. Any Xcode groups created should be reflected by folders in the filesystem. Code should be grouped not only by type, but also by feature for greater clarity. SDKs may be an expection.
