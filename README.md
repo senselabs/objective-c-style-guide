@@ -113,26 +113,27 @@ Use `#pragma mark -` to categorize methods in functional groupings and protocol/
 
 ## Spacing
 
-* Indent using 2 spaces (this conserves space in print and makes line wrapping less likely). Never indent with tabs. Be sure to set this preference in Xcode.
-* Method braces and other braces (`if`/`else`/`switch`/`while` etc.) always open on the same line as the statement but close on a new line.
+* Indent using 4 spaces. Never indent with tabs. Be sure to set this preference in Xcode.
+* Method braces and other braces (`if`/`else`/`switch`/`while` etc.) always open on a new line below the statement and close on another new line.
 
 **Preferred:**
 ```objc
-if (user.isHappy) {
-  //Do something
-} else {
-  //Do something else
+if (_user.isHappy)
+{
+    // Do something
+}
+else 
+{
+    // Do something else
 }
 ```
 
 **Not Preferred:**
 ```objc
-if (user.isHappy)
-{
-    //Do something
-}
-else {
-    //Do something else
+if (_user.isHappy) {
+  // Do something
+} else {
+  // Do something else
 }
 ```
 
@@ -168,7 +169,7 @@ else {
 
 When they are needed, comments should be used to explain **why** a particular piece of code does something. Any comments that are used must be kept up-to-date or deleted.
 
-Block comments should generally be avoided, as code should be as self-documenting as possible, with only the need for intermittent, few-line explanations. *Exception: This does not apply to those comments used to generate documentation.*
+If you are creating an SDK or reusable code, be sure to thoroughly document your code as if you were planning on open sourcing it. Use VVDocumenter for comment styling.
 
 ## Naming
 
