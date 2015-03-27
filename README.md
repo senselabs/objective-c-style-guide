@@ -141,7 +141,7 @@ if (self.isHappy) {
 
 * There should be exactly one blank line between methods to aid in visual clarity and organization. Whitespace within methods should separate functionality, but often there should probably be new methods.
 * Prefer using auto-synthesis. But if necessary, `@synthesize` and `@dynamic` should each be declared on new lines in the implementation.
-* Colon-aligning method invocation should often be done. When using blocks, make sure to align the brackets.
+* Colon-aligning method invocation should often be practiced. When using blocks, make sure to align the brackets.
 
 **Preferred:**
 
