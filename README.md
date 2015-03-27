@@ -28,7 +28,7 @@ Here are some of the documents from Apple that informed the style guide. If some
 * [Spacing](#spacing)
 * [Comments](#comments)
 * [Project Naming](#project-naming)
-* [Naming](#naming)
+* [General Naming](#general-naming)
   * [Underscores](#underscores)
 * [Methods](#methods)
 * [Variables](#variables)
@@ -175,7 +175,8 @@ If you are creating an SDK or reusable code, be sure to thoroughly document your
 
 ## Project Naming
 
-Name projects with the prefix "SL". If creating an SDK, a three letter prefix should always be used for class names and constants. For example, in SLCloudKit, the prefix 'CLK' should be used. For repo names, specify the `type-name without prefix-platform`
+Name projects with the prefix "SL". If creating an SDK, a three letter prefix should always be used for class names. For example, in SLCloudKit, the prefix 'CLK' should be used. For repo names, specify the 
+`type-name-platform`
 
 Example:
 
@@ -183,7 +184,7 @@ Example:
 - File name: CLKFileName
 - Repo Name: sdk-cloud-ios
 
-## Naming
+## General Naming
 
 Apple naming conventions should be adhered to wherever possible. Long, descriptive method and variable names are good.
 
