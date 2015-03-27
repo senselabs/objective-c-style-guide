@@ -676,6 +676,26 @@ if (error)
 
 Some of Apple’s APIs write garbage values to the error parameter (if non-NULL) in successful cases, so switching on the error can cause false negatives (and subsequently crash).
 
+In accordance with the above, any methods that need to return an error to the caller should do so by accepting a pointer to a `NSError *` object and return a boolean indicating if an error occured or not. The domain should be a constant specific to the type of error, and the error code defined in an `NS_ENUM`.
+
+**Preferred:**
+```objc
+- (BOOL) doSomethingWithError:(NSError **)error
+{
+   // error condition
+   *error = [NSError errorWithDomain:CLKNetworkError code:CLKNetworkErrorCodeNotFound userInfo:nil];
+   return NO;
+}
+```
+
+**Not Preferred:**
+```objc
+- (NSError *) doSomething
+{
+   // error condition
+   return [NSError errorWithDomain:@"Network error" code:42 userInfo:nil];
+}
+```
 
 ## Singletons
 
