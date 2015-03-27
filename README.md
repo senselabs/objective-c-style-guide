@@ -269,7 +269,7 @@ Properties should be used in all cases unless you are working with C/C++ code. P
 
 An exception to this: inside initializers, the backing instance variable (i.e. _variableName) should be used directly to avoid any potential side effects of the getters/setters.
 
-Property attributes should be explicitly listed, and will help new programmers when reading the code. 
+Property attributes should be explicitly listed, and will help new programmers when reading the code. Order them as `(threadSafety, storage)`.
 
 **Preferred:**
 
@@ -282,7 +282,7 @@ Property attributes should be explicitly listed, and will help new programmers w
 **Not Preferred:**
 
 ```objc
-@property (weak, nonatomic) IBOutlet UIView *containerView;
+@property (nonatomic, weak) IBOutlet UIView *containerView;
 @property (strong) NSString *tutorialName;
 @property (nonatomic) int pageCount;
 ```
@@ -480,9 +480,9 @@ Private properties should be declared in class extensions (anonymous categories)
 ```objc
 @interface CLKDetailViewController ()
 
-@property (strong, nonatomic) GADBannerView *googleAdView;
-@property (strong, nonatomic) ADBannerView *iAdView;
-@property (strong, nonatomic) UIWebView *adXWebView;
+@property (nonatmoic, strong) GADBannerView *googleAdView;
+@property (nonatmoic, strong) ADBannerView *iAdView;
+@property (nonatomic, strong) UIWebView *adXWebView;
 
 @end
 ```
