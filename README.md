@@ -32,7 +32,7 @@ Here are some of the documents from Apple that informed the style guide. If some
   * [Underscores](#underscores)
 * [Methods](#methods)
 * [Variables](#variables)
-* [Property Attributes](#property-attributes)
+* [Properties](#properties)
 * [Dot-Notation Syntax](#dot-notation-syntax)
 * [Flags](#flags)
 * [Literals](#literals)
