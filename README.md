@@ -1,12 +1,12 @@
 # The Official SenseLabs Objective-C Style Guide
 
-This style guide outlines the coding conventions for SenseLabs.
+This style guide outlines the coding conventions for iOS Development at SenseLabs.
 
 ## Introduction
 
-The reason we made this style guide was so that we could keep the code in our books, tutorials, and starter kits nice and consistent - even though we have many different authors working on the books.
+We made this style guide to keep our code consistent accross our team. As we continue to develop several layers to our apps, from Core UX, Game Development, and SDKs, it is now more important to be on the same page with one another.
 
-This style guide is different from other Objective-C style guides you may see, because the focus is centered on readability for print and the web. Many of the decisions were made with an eye toward conserving space for print, easy legibility, and tutorial writing.
+This style guide is different from other Objective-C style guides you may see, because the focus is centered on readability. Many of the decisions were made with an eye toward easy legibility and reusability.
 
 ## Credits
 
