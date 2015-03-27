@@ -380,7 +380,7 @@ When using `enum`s, it is recommended to use the new fixed underlying type speci
 **For Example:**
 
 ```objc
-typedef NS_ENUM(NSInteger, CLKLeftMenuTopItemType) 
+typedef NS_ENUM(NSUInteger, CLKLeftMenuTopItemType) 
 {
   CLKLeftMenuTopItemMain,
   CLKLeftMenuTopItemShows,
@@ -391,7 +391,7 @@ typedef NS_ENUM(NSInteger, CLKLeftMenuTopItemType)
 You can also make explicit value assignments (showing older k-style constant definition):
 
 ```objc
-typedef NS_ENUM(NSInteger, CLKGlobalConstants) 
+typedef NS_ENUM(NSUInteger, CLKGlobalConstants) 
 {
   CLKPinSizeMin = 1,
   CLKPinSizeMax = 5,
