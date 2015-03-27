@@ -316,6 +316,30 @@ NSInteger arrayCount = self.array.count;
 UIApplication.sharedApplication.delegate;
 ```
 
+## Flags
+
+Flags should be used as structs, making it easy to distinguish in code if you are using a flag.
+
+```objc
+@interface ViewController : UIViewController
+{
+    struct
+    {
+        BOOL isKeyboardActive;
+        BOOL isLoginVisible;
+    } _flag;
+}
+```
+
+You can then access the flag easily:
+
+```objc
+if (_flag.isKeyboardActive)
+{
+	// Do something
+}
+```
+
 ## Literals
 
 `NSString`, `NSDictionary`, `NSArray`, and `NSNumber` literals should be used whenever creating immutable instances of those objects. Pay special care that `nil` values can not be passed into `NSArray` and `NSDictionary` literals, as this will cause a crash.
