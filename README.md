@@ -358,9 +358,7 @@ if (_flag.isKeyboardActive)
 
 ```objc
 NSArray *names = @[@"Brian", @"Matt", @"Chris", @"Alex", @"Steve", @"Paul"];
-NSDictionary *productManagers = @{@"iPhone": @"Kate", 
-				@"iPad": @"Kamal", 
-				@"Mobile Web": @"Bill"};
+NSDictionary *productManagers = @{@"iPhone": @"Kate", @"iPad": @"Kamal", @"Mobile Web": @"Bill"};
 NSNumber *shouldUseLiterals = @(YES);
 NSNumber *buildingStreetNumber = @(10018);
 ```
@@ -384,23 +382,9 @@ NSArray *array = @[@"uno", @"dos", @"tres", @"cuatro"];
 * In that case, break them in several lines:
 
 ```objc
-NSArray *array = @[
-    @"This is how we do, yeah, chilling, laid back",
-    @"Straight stuntin’ yeah we do it like that",
-    @"This is how we do, do do do do, this is how we do",
-];
-```
-
-* Dictionary one-liners are reserved for single pairs only:
-
-```objc
-NSDictionary *dict = @{@"key" : @"highway"};
-```
-
-* Format it pretty otherwise, leaving a trailing comma after the last item:
-```objc
-NSDictionary *dict = @{ @"key1" : @"highway",
-    			@"key2" : @"heart"};
+NSArray *array = @[@"This is how we do, yeah, chilling, laid back",
+		           @"Straight stuntin’ yeah we do it like that",
+                   @"This is how we do, do do do do, this is how we do"];
 ```
 
 ## Constants
