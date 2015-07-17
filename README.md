@@ -36,6 +36,7 @@ Here are some of the documents from Apple that informed the style guide. If some
 * [Dot-Notation Syntax](#dot-notation-syntax)
 * [Flags](#flags)
 * [Literals](#literals)
+* [Containers](#containers)
 * [Constants](#constants)
 * [Enumerated Types](#enumerated-types)
 * [Case Statements](#case-statements)
@@ -120,9 +121,9 @@ Use `#pragma mark -` to categorize methods in functional groupings and protocol/
 
 **Preferred:**
 ```objc
-if (self.isHappy)
+if (itsMagic) 
 {
-    // Do something
+    [self makeItEverlasting];
 }
 else 
 {
@@ -132,8 +133,8 @@ else
 
 **Not Preferred:**
 ```objc
-if (self.isHappy) {
-  // Do something
+if (itsMagic) {
+    [self makeItEverlasting];
 } else {
   // Do something else
 }
@@ -176,6 +177,24 @@ if (self.isHappy) {
 When they are needed, comments should be used to explain **why** a particular piece of code does something. Any comments that are used must be kept up-to-date or deleted.
 
 If you are creating an SDK or reusable code, be sure to thoroughly document your code as if you were planning on open sourcing it. Use VVDocumenter for comment styling.
+
+* Use the `//` style for single line comments or when appending comments in the same line of code.
+* Use the `/* */` style for multi-line comments.
+
+**Example:**
+```objc
+/**
+ * This is a multi-line comment. The opening and closing markers are on their
+ * own lines, and each other line is preceded by a * that is indented by one
+ * space.
+ *
+ * This is a new paragraph in the same block comment.
+ */
+
+stop(); // Hammer-time!
+
+// this is a very brief comment.
+```
 
 ## Project Naming
 
@@ -339,7 +358,9 @@ if (_flag.isKeyboardActive)
 
 ```objc
 NSArray *names = @[@"Brian", @"Matt", @"Chris", @"Alex", @"Steve", @"Paul"];
-NSDictionary *productManagers = @{@"iPhone": @"Kate", @"iPad": @"Kamal", @"Mobile Web": @"Bill"};
+NSDictionary *productManagers = @{@"iPhone": @"Kate", 
+				@"iPad": @"Kamal", 
+				@"Mobile Web": @"Bill"};
 NSNumber *shouldUseLiterals = @(YES);
 NSNumber *buildingStreetNumber = @(10018);
 ```
@@ -351,6 +372,35 @@ NSArray *names = [NSArray arrayWithObjects:@"Brian", @"Matt", @"Chris", @"Alex",
 NSDictionary *productManagers = [NSDictionary dictionaryWithObjectsAndKeys: @"Kate", @"iPhone", @"Kamal", @"iPad", @"Bill", @"Mobile Web", nil];
 NSNumber *shouldUseLiterals = [NSNumber numberWithBool:YES];
 NSNumber *buildingStreetNumber = [NSNumber numberWithInteger:10018];
+```
+
+## Containers
+* Array one-liners are acceptable unless they have too many items or their values are too long.
+
+```objc
+NSArray *array = @[@"uno", @"dos", @"tres", @"cuatro"];
+```
+
+* In that case, break them in several lines:
+
+```objc
+NSArray *array = @[
+    @"This is how we do, yeah, chilling, laid back",
+    @"Straight stuntin’ yeah we do it like that",
+    @"This is how we do, do do do do, this is how we do",
+];
+```
+
+* Dictionary one-liners are reserved for single pairs only:
+
+```objc
+NSDictionary *dict = @{@"key" : @"highway"};
+```
+
+* Format it pretty otherwise, leaving a trailing comma after the last item:
+```objc
+NSDictionary *dict = @{ @"key1" : @"highway",
+    			@"key2" : @"heart"};
 ```
 
 ## Constants
@@ -628,26 +678,44 @@ When coding with conditionals, the left hand margin of the code should be the "g
 **Preferred:**
 
 ```objc
-- (void)someMethod 
+- (void)setFireToThe:(id)rain
 {
-  if (!someOther) 
-  {
-	return;
-  }
+    if ([_rain isEqualTo:rain]) 
+    {
+        return;
+    }
 
-  // Do something important
+    _rain = rain;
 }
 ```
 
 **Not Preferred:**
 
 ```objc
-- (void)someMethod 
+- (void)setFireToThe:(id)rain
 {
-  if (someOther) 
-  {
-    	// Do something important
-  }
+    if (![_rain isEqualTo:rain]) 
+    {
+        _rain = rain;
+    }
+}
+```
+
+Return Early
+------------
+* Return early on errors and failed pre-conditions to avoid unnecessary nested brackets and / or unnecessary
+computations.
+
+**Example:**
+
+```objc
+- (void)setFireToThe:(id)rain
+{
+    if ([_rain isEqualTo:rain]) {
+        return;
+    }
+
+    _rain = rain;
 }
 ```
 
